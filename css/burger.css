@@ -1,0 +1,209 @@
+[type="checkbox"]:checked,
+[type="checkbox"]:not(:checked){
+    visibility: hidden;
+}
+.menu-icon:checked + label,
+.menu-icon:not(:checked) + label{
+    position: fixed;
+    top: 50px;
+    right: 66px;
+    display: block;
+    width: 15px;
+    height: 15px;
+    padding: 100px 100px;
+    margin: 0;
+    z-index: 10;
+}
+.menu-icon:checked + label:before,
+.menu-icon:not(:checked) + label:before{
+    position: absolute;
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    z-index: 10;
+    top: -10px;
+    left: 165px;
+    border-top: 2px solid #353746;
+    border-bottom: 2px solid #353746;
+    transition: border-width 100ms 1500ms ease, 
+                top 100ms 1600ms cubic-bezier(0.23, 1, 0.32, 1),
+                height 100ms 1600ms cubic-bezier(0.23, 1, 0.32, 1), 
+                background-color 200ms ease,
+                transform 200ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+.menu-icon:checked + label:after,
+.menu-icon:not(:checked) + label:after{
+    position: absolute;
+    content: '';
+    display: block;
+    width: 12px;
+    height: 2px;
+    z-index: 20;
+    top: 0px;
+    right: 18px;
+    background-color: #353746;
+    margin-top: -1px;
+    transition: width 100ms 1750ms ease, 
+                right 100ms 1750ms ease,
+                margin-top 100ms ease, 
+                transform 200ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+.menu-icon:checked + label:before{
+    top: 0px;
+    transform: rotate(45deg);
+    height: 2px;
+    background-color: #353746;
+    border-width: 0;
+    transition: border-width 100ms 340ms ease, 
+                top 100ms 300ms cubic-bezier(0.23, 1, 0.32, 1),
+                height 100ms 300ms cubic-bezier(0.23, 1, 0.32, 1), 
+                background-color 200ms 500ms ease,
+                transform 200ms 1700ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+.menu-icon:checked + label:after{
+    width: 30px;
+    margin-top: 0;
+    right: 10px;
+    transform: rotate(-45deg);
+    transition: width 100ms ease,
+                right 100ms ease,  
+                margin-top 100ms 500ms ease, 
+                transform 200ms 1700ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.header__burger {
+    position: fixed;
+    top: 20px;
+    right: 60px;
+    display: block;
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    margin: 0;
+    z-index: 9;
+    overflow: hidden;
+    box-shadow: 0 8px 30px 0 rgba(0,0,0,0.3);
+    background-color: #ffff;
+    animation: border-transform 7s linear infinite;
+    transition: top 350ms 1100ms cubic-bezier(0.23, 1, 0.32, 1),  
+                right 350ms 1100ms cubic-bezier(0.23, 1, 0.32, 1),
+                transform 250ms 1100ms ease,
+                width 650ms 400ms cubic-bezier(0.23, 1, 0.32, 1),
+                height 650ms 400ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+@keyframes border-transform{
+    0%,100% { border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%; } 
+    14% { border-radius: 40% 60% 54% 46% / 49% 60% 40% 51%; } 
+    28% { border-radius: 54% 46% 38% 62% / 49% 70% 30% 51%; } 
+    42% { border-radius: 61% 39% 55% 45% / 61% 38% 62% 39%; } 
+    56% { border-radius: 61% 39% 67% 33% / 70% 50% 50% 30%; } 
+    70% { border-radius: 50% 50% 34% 66% / 56% 68% 32% 44%; } 
+    84% { border-radius: 46% 54% 50% 50% / 35% 61% 39% 65%; } 
+}
+
+.menu-icon:checked ~ .header__burger {
+  /* animation-play-state: paused; */
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    width: 50vw;
+    height: 50vw;
+    transition: top 350ms 700ms cubic-bezier(0.23, 1, 0.32, 1),  
+                right 350ms 700ms cubic-bezier(0.23, 1, 0.32, 1),
+                transform 250ms 700ms ease,
+                width 750ms 1000ms cubic-bezier(0.23, 1, 0.32, 1),
+                height 750ms 1000ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.header__burger ul{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    z-index: 6;
+    text-align: center;
+    transform: translateY(-50%);
+    list-style: none;
+}
+.header__burger ul li{
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 10px 0;
+    text-align: center;
+    list-style: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(30px);
+    transition: all 250ms linear;
+}
+.header__burger ul li:nth-child(1){
+    transition-delay: 250ms;
+}
+.header__burger ul li:nth-child(2){
+    transition-delay: 200ms;
+}
+.header__burger ul li:nth-child(3){
+    transition-delay: 150ms;
+}
+.header__burger ul li:nth-child(4){
+    transition-delay: 100ms;
+}
+.header__burger ul li:nth-child(5){
+    transition-delay: 50ms;
+}
+.header__burger ul li a{
+    font-size: 8vh;
+    text-transform: uppercase;
+    line-height: 1.2;
+    position: relative;
+    color: #000000d7;
+    transition: all 250ms linear;
+}
+.header__burger ul li a:hover{
+    color: #7711DD;
+}
+
+.header__burger ul li a:hover:after{
+    width: 100%;
+}
+
+.menu-icon:checked ~ .header__burger  ul li {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 350ms ease,
+                transform 250ms ease;
+}
+.menu-icon:checked ~ .header__burger ul li:nth-child(1){
+    transition-delay: 1400ms;
+}
+.menu-icon:checked ~ .header__burger ul li:nth-child(2){
+    transition-delay: 1480ms;
+}
+.menu-icon:checked ~ .header__burger ul li:nth-child(3){
+    transition-delay: 1560ms;
+}
+.menu-icon:checked ~ .header__burger ul li:nth-child(4){
+    transition-delay: 1640ms;
+}
+.menu-icon:checked ~ .header__burger ul li:nth-child(5){
+    transition-delay: 1720ms;
+}
+@media screen and (max-width: 991px) {
+    .menu-icon:checked + label,
+    .menu-icon:not(:checked) + label{
+        right: 55px;
+    }
+    .header__burger{
+        right: 30px;
+    }
+    .header__burger ul li a{
+        font-size: 8vh;
+    }
+}
